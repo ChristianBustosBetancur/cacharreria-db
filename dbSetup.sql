@@ -132,7 +132,7 @@ INSERT INTO PROVEEDORES (nombre, empresa, telefono) VALUES
 ('Andrés Ruiz', 'Mundo Escolar', '3101234567'),
 ('Natalia Ortiz', 'Cacharrería Central', '3112345678');
 
-INSERT INTO COMPONENTES (id, nombre, descripcion, tipo) VALUES
+INSERT INTO COMPONENTES (nombre, descripcion, tipo) VALUES
 ('Plástico PP', 'Polipropileno resistente', 'Material'),
 ('Cartón', 'Cartón prensado', 'Material'),
 ('Tela de moños', 'Tela flexiblee para moños', 'Material'),
@@ -146,7 +146,7 @@ INSERT INTO COMPONENTES (id, nombre, descripcion, tipo) VALUES
 ('Chaquiras', 'Chaquiras para bisutería', 'Material'),
 ('Caucho', 'Caucho antideslizante', 'Material');
 
-INSERT INTO CATEGORIAS (id, nombre, descripcion) VALUES
+INSERT INTO CATEGORIAS (nombre, descripcion) VALUES
 ('Papelería', 'Útiles escolares y de oficina'),
 ('Piñatería', 'Artículos para fiestas y celebraciones'),
 ('Hogar', 'Productos de uso doméstico'),
@@ -160,7 +160,7 @@ INSERT INTO CATEGORIAS (id, nombre, descripcion) VALUES
 ('Escolar', 'Material para estudiantes'),
 ('Temporada', 'Productos de temporadas especiales');
 
-INSERT INTO SEDES (id, direccion, enfoque) VALUES
+INSERT INTO SEDES (direccion, enfoque) VALUES
 ('Cra. 45 #50-20, Medellín', 'Papelería'),
 ('Cl. 10 #32-15, Medellín', 'Hogar'),
 ('Cra. 80 #30-40, Medellín', 'Piñatería'),
@@ -174,7 +174,7 @@ INSERT INTO SEDES (id, direccion, enfoque) VALUES
 ('Cra. 38 #52-11, Medellín', 'Aseo'),
 ('Cl. 44 #68-33, Envigado', 'Temporada');
 
-INSERT INTO CLIENTES (id, nombre, telefono) VALUES
+INSERT INTO CLIENTES (nombre, telefono) VALUES
 ('Laura Gómez', '3001234567'),
 ('Juan Pérez', '3012345678'),
 ('María Rodríguez', '3023456789'),
