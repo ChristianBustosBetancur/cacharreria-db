@@ -132,7 +132,7 @@ INSERT INTO PROVEEDORES (nombre, empresa, telefono) VALUES
 ('Andrés Ruiz', 'Mundo Escolar', '3101234567'),
 ('Natalia Ortiz', 'Cacharrería Central', '3112345678');
 
-INSERT INTO COMPONENTES (id, nombre, descripción, tipo) VALUES
+INSERT INTO COMPONENTES (id, nombre, descripcion, tipo) VALUES
 ('Plástico PP', 'Polipropileno resistente', 'Material'),
 ('Cartón', 'Cartón prensado', 'Material'),
 ('Tela de moños', 'Tela flexiblee para moños', 'Material'),
@@ -160,7 +160,7 @@ INSERT INTO CATEGORIAS (id, nombre, descripcion) VALUES
 ('Escolar', 'Material para estudiantes'),
 ('Temporada', 'Productos de temporadas especiales');
 
-INSERT INTO SEDES (id, dirección, enfoque) VALUES
+INSERT INTO SEDES (id, direccion, enfoque) VALUES
 ('Cra. 45 #50-20, Medellín', 'Papelería'),
 ('Cl. 10 #32-15, Medellín', 'Hogar'),
 ('Cra. 80 #30-40, Medellín', 'Piñatería'),
