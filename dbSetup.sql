@@ -116,6 +116,8 @@ CREATE TABLE COMPONENTES_PRODUCTOS
 	id_componente INT NOT NULL FOREIGN KEY REFERENCES COMPONENTES(id) 
 );
 
+
+--Inserts
 INSERT INTO PROVEEDORES (nombre, empresa, telefono) VALUES
 ('Carlos Pérez', 'Distribuciones Andinas', '3001234567'),
 ('María Gómez', 'Papeles Medellín', '3012345678'),
