@@ -285,3 +285,134 @@ INSERT INTO COMPONENTES_PRODUCTOS (cantidad, id_producto, id_componente) VALUES
 (10, 10, 1),
 (100, 11, 3),
 (20, 12, 8);
+
+
+--Updates
+USE CACHARRERIA;
+GO
+
+-- Update: proveedores
+UPDATE PROVEEDORES
+SET telefono = '3001112222'
+WHERE id = 1;
+
+UPDATE PROVEEDORES
+SET empresa = 'Papeles del Valle'
+WHERE id = 2;
+
+-- Update: componentes
+UPDATE COMPONENTES
+SET descripcion = 'Polipropileno de alta resistencia'
+WHERE id = 1;
+
+UPDATE COMPONENTES
+SET tipo = 'Estructural'
+WHERE id = 2;
+
+-- Update: categorias
+UPDATE CATEGORIAS
+SET descripcion = 'Útiles escolares, de oficina y material didáctico'
+WHERE id = 1;
+
+UPDATE CATEGORIAS
+SET nombre = 'Fiestas y Piñatería'
+WHERE id = 2;
+
+-- Update: sedes
+UPDATE SEDES
+SET enfoque = 'Papelería y Escolar'
+WHERE id = 1;
+
+UPDATE SEDES
+SET direccion = 'Cl. 10 #32-18, Medellín'
+WHERE id = 2;
+
+-- Update: clientes
+UPDATE CLIENTES
+SET telefono = '3009998888'
+WHERE id = 1;
+
+UPDATE CLIENTES
+SET nombre = 'Juan Carlos Pérez'
+WHERE id = 2;
+
+UPDATE CLIENTES
+SET telefono = '3021234567'
+WHERE id = 3;
+
+-- Update: productos
+UPDATE PRODUCTOS
+SET precio = 9000.00
+WHERE id = 1;
+
+UPDATE PRODUCTOS
+SET stock = 95
+WHERE id = 2;
+
+--ajuste de precio
+UPDATE PRODUCTOS
+SET precio = 47000.00, relevancia = 9
+WHERE id = 3;
+
+-- Update: trabajadores
+UPDATE TRABAJADORES
+SET sueldo = 3350000.00
+WHERE id = 1;
+
+UPDATE TRABAJADORES
+SET cargo = 'Cajera Principal'
+WHERE id = 2;
+
+-- tuvo un ascenso a supervisor
+UPDATE TRABAJADORES
+SET cargo = 'Supervisor', sueldo = 2500000.00
+WHERE id = 3;
+
+-- Update: suscripciones
+UPDATE SUSCRIPCIONES
+SET estado = 'Renovada'
+WHERE id = 1;
+
+UPDATE SUSCRIPCIONES
+SET costo = 42000.00
+WHERE id = 2;
+
+-- Update: ventas
+UPDATE VENTAS
+SET metodo_pago = 'Tarjeta'
+WHERE id = 1;
+
+UPDATE VENTAS
+SET monto = 47500.00
+WHERE id = 2;
+
+UPDATE VENTAS
+SET metodo_pago = 'Nequi'
+WHERE id = 3;
+
+-- Update: productos_ventas
+UPDATE PRODUCTOS_VENTAS
+SET cantidad = 3
+WHERE id = 1;
+
+UPDATE PRODUCTOS_VENTAS
+SET cantidad = 2
+WHERE id = 2;
+
+-- Update: proveedores_productos
+UPDATE PROVEEDORES_PRODUCTOS
+SET id_proveedor = 6
+WHERE id = 1;
+
+UPDATE PROVEEDORES_PRODUCTOS
+SET id_proveedor = 1
+WHERE id = 2;
+
+-- Update: componentes_productos
+UPDATE COMPONENTES_PRODUCTOS
+SET cantidad = 25
+WHERE id = 1;
+
+UPDATE COMPONENTES_PRODUCTOS
+SET cantidad = 15
+WHERE id = 2;
