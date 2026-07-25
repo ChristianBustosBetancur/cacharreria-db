@@ -477,7 +477,7 @@ WHERE id = 7;
 
 -- Delete: componentes
 DELETE FROM COMPONENTES
-WHERE id = 7;
+WHERE id = 4;
 
 DELETE FROM COMPONENTES
 WHERE id = 11;
@@ -491,10 +491,10 @@ WHERE id = 8;
 
 -- Delete: sedes
 DELETE FROM SEDES
-WHERE id = 2;
+WHERE id = 10;
 
 DELETE FROM SEDES
-WHERE id = 10;
+WHERE id = 13;
 
 -- Delete: clientes
 DELETE FROM CLIENTES
