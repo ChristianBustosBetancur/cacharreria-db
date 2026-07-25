@@ -502,3 +502,70 @@ WHERE id = 2;
 
 DELETE FROM CLIENTES
 WHERE id = 10;
+
+-- CONSULTAS 
+-- Consulta 1
+SELECT nombre, cargo, telefono, sueldo
+FROM TRABAJADORES
+WHERE id_sede = 2;
+
+-- Consulta 2
+SELECT c.nombre, c.telefono
+FROM CLIENTES AS c
+JOIN SUSCRIPCIONES AS s
+ON c.id = s.id_cliente
+WHERE s.estado = 'Expirada';
+
+-- Consulta 3
+SELECT nombre, precio, stock
+FROM PRODUCTOS
+WHERE stock > 100;
+
+-- Consulta 4
+SELECT p.nombre AS producto,c.nombre AS categoria
+FROM PRODUCTOS AS p
+JOIN CATEGORIAS AS c 
+ON p.id_categoria = c.id;
+
+-- Consulta 5
+SELECT p.nombre AS producto, pr.nombre AS proveedor, pr.empresa
+FROM PRODUCTOS AS p
+JOIN PROVEEDORES_PRODUCTOS AS pp
+ON p.id = pp.id_producto
+JOIN PROVEEDORES AS pr
+ON pp.id_proveedor = pr.id;
+
+-- Consulta 6
+SELECT p.nombre AS producto, c.nombre AS componente, cp.cantidad
+FROM PRODUCTOS AS p
+JOIN COMPONENTES_PRODUCTOS AS cp
+ON p.id = cp.id_producto
+JOIN COMPONENTES AS c
+ON cp.id_componente = c.id;
+
+-- Consulta 7
+SELECT nombre, descripcion, tipo
+FROM COMPONENTES
+WHERE tipo = 'Decorativo';
+
+-- Consulta 8
+SELECT c.nombre, c.telefono
+FROM CLIENTES AS c
+WHERE NOT EXISTS
+(
+    SELECT 1
+    FROM SUSCRIPCIONES AS s
+    WHERE s.id_cliente = c.id
+);
+
+-- Consulta 9
+SELECT p.nombre AS producto, c.nombre AS categoria
+FROM PRODUCTOS AS p
+CROSS JOIN CATEGORIAS AS c;
+
+-- Consulta 10
+SELECT nombre, cargo, sueldo
+FROM TRABAJADORES
+WHERE sueldo > 1500000;
+
+
