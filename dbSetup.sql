@@ -13,7 +13,6 @@ CREATE TABLE PROVEEDORES
 	telefono VARCHAR(10)
 );
 
-
 CREATE TABLE COMPONENTES
 (
 	id INT IDENTITY(1,1) PRIMARY KEY,
@@ -31,9 +30,9 @@ CREATE TABLE CATEGORIAS
 
 CREATE TABLE SEDES
 (
-	id INT IDENTITY(1,1) PRIMARY KEY,
-	direccion VARCHAR(100) NOT NULL,
-	enfoque VARCHAR(30)
+    id INT IDENTITY(1,1) PRIMARY KEY,
+    direccion VARCHAR(100) NOT NULL,
+    enfoque VARCHAR(100) NOT NULL
 );
 
 CREATE TABLE CLIENTES
@@ -43,7 +42,6 @@ CREATE TABLE CLIENTES
 	telefono VARCHAR(10)
 );
 
-
 --Secundarias
 CREATE TABLE PRODUCTOS
 (
@@ -52,7 +50,7 @@ CREATE TABLE PRODUCTOS
 	stock INT NOT NULL CHECK (stock >= 0),
 	precio DECIMAL(10,2) NOT NULL CHECK (precio >= 0),
 	relevancia INT,
-	id_Categoria INT NOT NULL FOREIGN KEY REFERENCES CATEGORIAS(id) 
+	id_categoria INT NOT NULL FOREIGN KEY REFERENCES CATEGORIAS(id) 
 	
 );
 
@@ -88,7 +86,6 @@ CREATE TABLE VENTAS
 	id_trabajador INT NOT NULL FOREIGN KEY REFERENCES TRABAJADORES(id) 
 
 );
-
 
 CREATE TABLE PRODUCTOS_VENTAS
 ( 
@@ -133,18 +130,18 @@ INSERT INTO PROVEEDORES (nombre, empresa, telefono) VALUES
 ('Natalia Ortiz', 'Cacharrería Central', '3112345678');
 
 INSERT INTO COMPONENTES (nombre, descripcion, tipo) VALUES
-('Plástico PP', 'Polipropileno resistente', 'Material'),
-('Cartón', 'Cartón prensado', 'Material'),
-('Tela de moños', 'Tela flexiblee para moños', 'Material'),
-('Madera', 'Madera liviana', 'Material'),
-('Metal', 'Acero inoxidable', 'Material'),
-('Silicona', 'Silicona flexible', 'Material'),
-('Tela', 'Tela poliéster', 'Material'),
-('Pintura', 'Pintura no tóxica', 'Acabado'),
-('Pegamento', 'Adhesivo industrial', 'Insumo'),
-('Espuma', 'Espuma de alta densidad', 'Material'),
-('Chaquiras', 'Chaquiras para bisutería', 'Material'),
-('Caucho', 'Caucho antideslizante', 'Material');
+('Plástico PP', 'Polipropileno resistente', 'Estructural'),
+('Cartón', 'Cartón prensado para cajas y soportes', 'Empaque'),
+('Tela de moños', 'Tela flexible para elaborar moños', 'Decorativo'),
+('Madera', 'Madera liviana para estructuras', 'Estructural'),
+('Metal', 'Acero inoxidable para soportes', 'Estructural'),
+('Silicona', 'Silicona flexible para unión de piezas', 'Accesorio'),
+('Tela', 'Tela poliéster para decoración', 'Decorativo'),
+('Pintura', 'Pintura no tóxica para acabados', 'Decorativo'),
+('Pegamento', 'Adhesivo industrial para ensamblaje', 'Accesorio'),
+('Espuma', 'Espuma de alta densidad para relleno', 'Estructural'),
+('Chaquiras', 'Chaquiras utilizadas en bisutería', 'Decorativo'),
+('Caucho', 'Caucho antideslizante para bases', 'Accesorio');
 
 INSERT INTO CATEGORIAS (nombre, descripcion) VALUES
 ('Papelería', 'Útiles escolares y de oficina'),
@@ -160,19 +157,22 @@ INSERT INTO CATEGORIAS (nombre, descripcion) VALUES
 ('Escolar', 'Material para estudiantes'),
 ('Temporada', 'Productos de temporadas especiales');
 
+-- 
 INSERT INTO SEDES (direccion, enfoque) VALUES
-('Cra. 45 #50-20, Medellín', 'Papelería'),
-('Cl. 10 #32-15, Medellín', 'Hogar'),
-('Cra. 80 #30-40, Medellín', 'Piñatería'),
-('Cl. 50 #70-25, Bello', 'Papelería'),
-('Cra. 52 #48-18, Envigado', 'Hogar'),
-('Cl. 65 #45-10, Itagüí', 'Piñatería'),
-('Cra. 43A #15-60, Medellín', 'Escolar'),
-('Cl. 30 #75-20, Sabaneta', 'Plásticos'),
-('Cra. 65 #80-15, Medellín', 'Decoración'),
-('Cl. 85 #48-22, Bello', 'Cocina'),
-('Cra. 38 #52-11, Medellín', 'Aseo'),
-('Cl. 44 #68-33, Envigado', 'Temporada');
+('Cra. 45 #50-20, Medellín', 'Papelería, bisutería y maquillaje'),
+('Cl. 10 #32-15, Medellín', 'Hogar, decoración y juguetería'),
+('Cra. 80 #30-40, Medellín', 'Piñatería y celebraciones'),
+('Cl. 50 #70-25, Bello', 'Papelería y oficina'),
+('Cra. 52 #48-18, Envigado', 'Hogar y cocina'),
+('Cl. 65 #45-10, Itagüí', 'Bisutería y accesorios'),
+('Cra. 43A #15-60, Medellín', 'Maquillaje y cuidado personal'),
+('Cl. 30 #75-20, Sabaneta', 'Plásticos y organización'),
+('Cra. 65 #80-15, Medellín', 'Decoración y temporada'),
+('Cl. 85 #48-22, Bello', 'Cocina y utensilios'),
+('Cra. 38 #52-11, Medellín', 'Aseo y limpieza'),
+('Cl. 44 #68-33, Envigado', 'Juguetería y entretenimiento'),
+('Cra. 60 #40-12, Itagüí', 'Regalos y detalles'),
+('Cl. 25 #55-30, Sabaneta', 'Variedades y promociones');
 
 INSERT INTO CLIENTES (nombre, telefono) VALUES
 ('Laura Gómez', '3001234567'),
@@ -188,7 +188,7 @@ INSERT INTO CLIENTES (nombre, telefono) VALUES
 ('Sara Ortiz', '3101234567'),
 ('Andrés Morales', '3112345678');
 
-INSERT INTO PRODUCTOS (nombre, stock, precio, relevancia, id_Categoria) VALUES
+INSERT INTO PRODUCTOS (nombre, stock, precio, relevancia, id_categoria) VALUES
 ('Cuaderno 100 hojas', 120, 8500.00, 9, 1),
 ('Caja de Colores', 80, 12000.00, 8, 1),
 ('Piñata Unicornio', 15, 45000.00, 10, 2),
@@ -205,23 +205,25 @@ INSERT INTO PRODUCTOS (nombre, stock, precio, relevancia, id_Categoria) VALUES
 INSERT INTO TRABAJADORES (nombre, cargo, telefono, sueldo, fecha_ingreso, id_sede) VALUES
 ('Juan Pérez', 'Administrador', '3001111111', 3200000.00, '2023-01-15', 1),
 ('María Gómez', 'Cajera', '3002222222', 1800000.00, '2023-02-10', 2),
-('Carlos Ramírez', 'Vendedor', '3003333333', 1900000.00, '2022-11-05', 3),
-('Laura Sánchez', 'Supervisor', '3004444444', 2800000.00, '2022-09-18', 4),
-('Andrés López', 'Bodeguero', '3005555555', 1700000.00, '2024-01-08', 5),
-('Valentina Torres', 'Cajera', '3006666666', 1800000.00, '2023-05-12', 6),
-('Miguel Herrera', 'Vendedor', '3007777777', 1950000.00, '2023-03-20', 7),
-('Sofía Castro', 'Administrador', '3008888888', 3300000.00, '2021-08-30', 8),
-('David Morales', 'Auxiliar', '3009999999', 1650000.00, '2024-02-14', 9),
-('Camila Ortiz', 'Supervisor', '3011111111', 2900000.00, '2022-06-11', 10),
-('Sebastián Ruiz', 'Vendedor', '3012222222', 2000000.00, '2023-07-25', 11),
-('Natalia Díaz', 'Cajera', '3013333333', 1850000.00, '2024-03-01', 12);
+('Carlos Ramírez', 'Vendedor', '3003333333', 1900000.00, '2022-11-05', 1),
+('Laura Sánchez', 'Supervisor', '3004444444', 2800000.00, '2022-09-18', 2),
+('Andrés López', 'Bodeguero', '3005555555', 1700000.00, '2024-01-08', 1),
+('Valentina Torres', 'Cajera', '3006666666', 1800000.00, '2023-05-12', 2),
+('Miguel Herrera', 'Vendedor', '3007777777', 1950000.00, '2023-03-20', 1),
+('Sofía Castro', 'Administrador', '3008888888', 3300000.00, '2021-08-30', 2),
+('David Morales', 'Auxiliar', '3009999999', 1650000.00, '2024-02-14', 1),
+('Camila Ortiz', 'Supervisor', '3011111111', 2900000.00, '2022-06-11', 2),
+('Sebastián Ruiz', 'Vendedor', '3012222222', 2000000.00, '2023-07-25', 1),
+('Natalia Díaz', 'Cajera', '3013333333', 1850000.00, '2024-03-01', 2),
+('Daniel Rojas', 'Auxiliar', '3014444444', 1700000.00, '2024-04-10', 3),
+('Paula Martínez', 'Vendedora', '3015555555', 1950000.00, '2023-09-18', 4);
 
 INSERT INTO SUSCRIPCIONES (tipo, estado, fecha_inicio, fecha_finalizacion, costo, id_cliente) VALUES
 ('Mensual', 'Activa', '2026-01-01', '2026-01-31', 15000.00, 1),
 ('Trimestral', 'Activa', '2026-01-15', '2026-04-15', 40000.00, 2),
 ('Semestral', 'Activa', '2026-02-01', '2026-08-01', 70000.00, 3),
 ('Anual', 'Activa', '2026-01-10', '2027-01-10', 120000.00, 4),
-('Mensual', 'Vencida', '2025-12-01', '2025-12-31', 15000.00, 5),
+('Mensual', 'Expirada', '2025-12-01', '2025-12-31', 15000.00, 5),
 ('Mensual', 'Activa', '2026-03-01', '2026-03-31', 15000.00, 6),
 ('Trimestral', 'Activa', '2026-02-15', '2026-05-15', 40000.00, 7),
 ('Semestral', 'Activa', '2026-01-20', '2026-07-20', 70000.00, 8),
@@ -231,18 +233,18 @@ INSERT INTO SUSCRIPCIONES (tipo, estado, fecha_inicio, fecha_finalizacion, costo
 ('Mensual', 'Activa', '2026-04-01', '2026-04-30', 15000.00, 12);
 
 INSERT INTO VENTAS (monto, fecha, metodo_pago, id_cliente, id_trabajador) VALUES
-(12500.00, '2026-05-02', 'Efectivo', 1, 1),
+(17000.00, '2026-05-02', 'Efectivo', 1, 1),
 (45000.00, '2026-05-03', 'Nequi', 2, 2),
-(9800.00, '2026-05-04', 'Tarjeta', 3, 3),
-(78000.00, '2026-05-05', 'Transferencia', 4, 4),
-(23000.00, '2026-05-06', 'Efectivo', 5, 5),
-(35500.00, '2026-05-07', 'Daviplata', 6, 6),
-(18500.00, '2026-05-08', 'Tarjeta', 7, 7),
-(62000.00, '2026-05-09', 'Transferencia', 8, 8),
-(14200.00, '2026-05-10', 'Nequi', 9, 9),
-(27000.00, '2026-05-11', 'Efectivo', 10, 10),
-(51500.00, '2026-05-12', 'Tarjeta', 11, 11),
-(89000.00, '2026-05-13', 'Transferencia', 12, 12);
+(9000.00, '2026-05-04', 'Tarjeta', 3, 3),
+(65000.00, '2026-05-05', 'Transferencia', 4, 4),
+(44000.00, '2026-05-06', 'Efectivo', 5, 5),
+(10500.00, '2026-05-07', 'Daviplata', 6, 6),
+(18000.00, '2026-05-08', 'Tarjeta', 7, 7),
+(54000.00, '2026-05-09', 'Transferencia', 8, 8),
+(48000.00, '2026-05-10', 'Nequi', 9, 9),
+(35000.00, '2026-05-11', 'Efectivo', 10, 10),
+(56000.00, '2026-05-12', 'Tarjeta', 11, 11),
+(126000.00, '2026-05-13', 'Transferencia', 12, 12);
 
 INSERT INTO PRODUCTOS_VENTAS (cantidad, id_producto, id_venta) VALUES
 (2, 1, 1),
@@ -273,18 +275,18 @@ INSERT INTO PROVEEDORES_PRODUCTOS (id_producto, id_proveedor) VALUES
 (12, 1);
 
 INSERT INTO COMPONENTES_PRODUCTOS (cantidad, id_producto, id_componente) VALUES
-(20, 1, 2),
-(12, 2, 3),
-(5, 3, 7),
-(50, 4, 1),
-(15, 5, 1),
-(10, 6, 12),
-(8, 7, 5),
-(6, 8, 1),
-(4, 9, 11),
-(10, 10, 1),
-(100, 11, 3),
-(20, 12, 8);
+(20, 1, 2), 
+(12, 2, 1),
+(5, 3, 3), 
+(50, 4, 1), 
+(15, 5, 1), 
+(10, 6, 12),  
+(8, 7, 7),  
+(6, 8, 10),  
+(4, 9, 11),  
+(10, 10, 1),   
+(100, 11, 2),  
+(20, 12, 8);   
 
 
 --Updates
