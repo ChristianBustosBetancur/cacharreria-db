@@ -288,8 +288,7 @@ INSERT INTO COMPONENTES_PRODUCTOS (cantidad, id_producto, id_componente) VALUES
 
 
 --Updates
-USE CACHARRERIA;
-GO
+
 
 -- Update: proveedores
 UPDATE PROVEEDORES
